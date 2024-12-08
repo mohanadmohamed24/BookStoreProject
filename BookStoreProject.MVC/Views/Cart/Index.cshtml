@@ -1,0 +1,37 @@
+﻿@using BookStoreProject.BLL.ViewModels.CartVMS
+@model IEnumerable<CartReadVM>
+
+<h2>Cart List</h2>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Add Item to Cart</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Book</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cart in Model)
+        {
+            <tr>
+                <td>@cart.Quantity</td>
+                <td>@cart.BookId</td>
+                <td>@cart.UserID</td>
+                <td>
+                    <a href="@Url.Action("Details", new { id = cart.UserID })" class="btn btn-info">Details</a>
+                    <a href="@Url.Action("Edit", new { id = cart.BookId })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", new { id = cart.Quantity })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+            
